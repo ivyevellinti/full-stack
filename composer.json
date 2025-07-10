@@ -1,0 +1,12 @@
+{
+    "name": "ivy/fitcalc",
+    "description": "Calculadora de IMC",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Ivy\\Fitcalc\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
