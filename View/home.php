@@ -1,3 +1,39 @@
+<?php
+
+require_once '../vendor/autoload.php';
+
+//IMPORTANDO A CLASSE IMCS
+use Controller\ImcController;
+
+//CRIANDO UM OBJETO PARA REPRESENTAR CADA IMC CRIADO
+$imcController = new ImcController();
+
+// var_dump($imcController);
+
+$imcResult = null;
+
+// echo $_POST['weight'] . $_POST['height'];
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['weight'], $_POST['height'])) {
+        $weight = $_POST['weight'];
+        $height = $_POST['height'];
+
+        //UTILIZANDO O CONTROLLER COMO INTERMEDIÁRIO, MANIPULAÇÃO E GERENCIADOR DE DADOS FRONT/BACK
+        $imcResult = $imcController->calculateImc( $weight,$height);
+
+        //VERIFICAR SE OS CAMPOS FORAM PREENCHIDOS
+        if($imcResult['BMIrange'] != "O peso e a altura devem conter valor positivos."){
+            $imcController->saveIMC($weight,$height,$imcResult["imc"]);
+        }
+
+    }
+}
+
+?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -110,6 +146,11 @@
                 <div class="result">
                     <div class="result__info">
                         <!-- RESULTADO DO IMC -->
+                        <?php if($imcResult):  ?>
+
+                        <?php endif; ?>
+
+
                     </div>
                 </div>
             </div>

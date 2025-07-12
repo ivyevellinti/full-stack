@@ -4,9 +4,17 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Ivy\\Fitcalc\\": "src/"
-        }
+            "Ivy\\Fitcalc\\": "fitCalc/",
+            "Controller\\": "Controller/",
+            "Model\\": "Model/"
+        },
+        "files": [
+            "Config/configuration.php"
+        ]
     },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">= 8.0",
+        "ext-mbstring": "*"
+    }
 }
